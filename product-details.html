@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Detail</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f9f9f9;
+      color: #222;
+    }
+
+    /* NAVBAR */
+    header.navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      background: #111;
+      color: #fff;
+    }
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .icons span {
+      margin-left: 15px;
+      cursor: pointer;
+    }
+    .back-link {
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+      margin-right: 15px;
+    }
+
+    /* PRODUCT DETAIL */
+    .product-detail {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      text-align: center;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .product-detail img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    .product-detail h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .product-detail p {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+    .price {
+      font-size: 20px;
+      color: #e63946;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    /* BUTTONS */
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      border: none;
+      border-radius: 6px;
+      color: #fff;
+      cursor: pointer;
+      transition: opacity 0.3s;
+      text-decoration: none;
+    }
+    .btn:hover {
+      opacity: 0.9;
+    }
+    .btn-cart {
+      background: #111;
+    }
+    .btn-whatsapp {
+      background: #25D366; /* WhatsApp green */
+    }
+    .btn-instagram {
+      background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
+    }
+
+    /* MOBILE STYLES */
+    @media (max-width: 600px) {
+      header.navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+      }
+      .logo {
+        margin-bottom: 8px;
+      }
+      .icons {
+        margin-top: 8px;
+      }
+      .product-detail {
+        margin: 10px;
+        padding: 15px;
+      }
+      .product-detail h1 {
+        font-size: 20px;
+      }
+      .product-detail p {
+        font-size: 14px;
+      }
+      .price {
+        font-size: 18px;
+      }
+      .btn {
+        font-size: 14px;
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">૨εѵσµ૨</div>
+    <a href="index.html" class="back-link">← Back</a>
+    <div class="icons">
+      <span>♥</span>
+      <span>👤</span>
+    </div>
+  </header>
+
+  <!-- PRODUCT DETAIL -->
+  <div class="product-detail">
+    <img id="product-img" src="" alt="Product Image">
+    <h1 id="product-name"></h1>
+    <p id="product-desc"></p>
+    <p class="price" id="product-price"></p>
+
+    <!-- Buttons -->
+    <button class="btn btn-cart">Add to Cart</button>
+    <a id="order-instagram" class="btn btn-instagram" target="_blank">Order on Instagram</a>
+    <a id="order-whatsapp" class="btn btn-whatsapp" target="_blank">Order on WhatsApp</a>
+  </div>
+
+  <script>
+    // Grab query params
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get("name");
+    const img = params.get("img");
+
+    // Product data
+    const products = {
+      "adidas Manchester United 23/24 Lifestyler Tee T-Shirt - Beige": {
+        desc: "A comfy adidas tee with Manchester United vibes.",
+        price: "$50"
+      },
+      "BAPE x Comme des Garcons Osaka Tee Black": {
+        desc: "Rare collab tee between BAPE and CDG.",
+        price: "$120"
+      },
+      "Y2K GRVTY VISIONS Beanie": {
+        desc: "Y2K inspired beanie for streetwear fits.",
+        price: "$30"
+      },
+      "Ash black JORTS": {
+        desc: "Baggy ash-black denim jorts with a vintage cut.",
+        price: "$45"
+      },
+      "Custom denim JORTS BLUEXBLACK": {
+        desc: "Two-tone custom denim jorts. Stand out.",
+        price: "$55"
+      },
+      "NWT MARINE LAYER karleigh short": {
+        desc: "Marine Layer’s signature Karleigh short in premium fabric.",
+        price: "$60"
+      },
+      "CROPPED black converse Tee": {
+        desc: "Cropped black tee with Converse print.",
+        price: "$35"
+      },
+      "TEAL converse Tee": {
+        desc: "Bright teal tee by Converse. Everyday essential.",
+        price: "$35"
+      },
+      "VINTAGE 90s DOCKERS short": {
+        desc: "Original 90s Dockers shorts – retro vibes.",
+        price: "$40"
+      },
+      "YELLOW STONE TOTE BAG": {
+        desc: "Stylish yellow tote bag for daily carry.",
+        price: "$25"
+      },
+      "GILDAN black TEE": {
+        desc: "Classic black tee on a comfy Gildan blank.",
+        price: "$20"
+      },
+      "VINTAGE 90s DOCKERS short CARGO": {
+        desc: "Cargo-style Dockers shorts from the 90s.",
+        price: "$45"
+      },
+      "VINTAGE 90s DOCKERS short": {
+        desc: "Another OG 90s Dockers short. Limited stock.",
+        price: "$42"
+      }
+    };
+
+    // Fill product info
+    document.getElementById("product-img").src = img;
+    document.getElementById("product-name").textContent = name;
+    document.getElementById("product-desc").textContent = products[name]?.desc || "No description available.";
+    document.getElementById("product-price").textContent = products[name]?.price || "";
+
+    // Contact links
+    const instagramUser = "your_instagram_username"; // change this
+    const whatsappNumber = "1234567890"; // change this with country code, e.g. 254712345678
+
+    document.getElementById("order-instagram").href = `https://ig.me/${instagramUser}`;
+    document.getElementById("order-whatsapp").href = `https://wa.me/${whatsappNumber}?text=Hi! I'm interested in ordering: ${name}`;
+  </script>
+</body>
+</html>

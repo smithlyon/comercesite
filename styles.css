@@ -1,0 +1,209 @@
+/* GLOBAL */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #fff;
+  color: #533A33; /* Royal Brown for text */
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 30px;
+  background: #B0D2EC; /* Pale Cornflower Blue */
+  border-bottom: 1px solid #ccc;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #533A33; /* Royal Brown */
+}
+
+.gender-toggle button {
+  margin: 0 5px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: none;
+  background: #E0EBF7; /* lightened blue */
+  cursor: pointer;
+  color: #533A33;
+}
+
+.gender-toggle .active {
+  background: #648EC0; /* Silver Lake Blue */
+  color: #fff;
+}
+
+.search-bar input {
+  padding: 8px 15px;
+  width: 300px;
+  border: 1px solid #849DBB; /* Pewter Blue */
+  border-radius: 20px;
+}
+
+/* HERO */
+.hero {
+  background: #B0D2EC; /* Pale Cornflower Blue */
+  padding: 50px;
+  text-align: center;
+  border-radius: 12px;
+  margin: 20px;
+  color: #533A33; /* Royal Brown */
+}
+
+.hero h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.shop-btn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: none;
+  background: #648EC0; /* Silver Lake Blue */
+  color: #fff;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+/* LAYOUT */
+.container {
+  display: flex;
+  margin: 20px;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 200px;
+  padding-right: 20px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin: 15px 0;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #f5f5f5;
+  color: #533A33;
+}
+
+.sidebar .active {
+  background: #849DBB; /* Pewter Blue */
+  color: #fff;
+}
+
+/* PRODUCTS */
+.products {
+  flex: 1;
+}
+
+.products-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #533A33;
+}
+
+/* FILTERS */
+.filters {
+  margin: 20px 0;
+}
+
+.filters button {
+  margin-right: 10px;
+  padding: 6px 12px;
+  border: 1px solid #B5ACA3; /* Silver Chalice */
+  background: #fff;
+  border-radius: 20px;
+  cursor: pointer;
+  color: #533A33;
+}
+
+.filters button:hover {
+  background: #B0D2EC; /* Pale Cornflower Blue */
+}
+
+/* PRODUCT GRID */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 per row desktop */
+  gap: 20px;
+}
+
+/* PRODUCT CARD */
+.product-card {
+  position: relative;
+  background: #B5ACA3; /* Silver Chalice */
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  color: #533A33;
+  transition: transform 0.3s ease;
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 433 / 577; /* keeps image ratio */
+  border-radius: 8px;
+  display: block;
+}
+
+/* Heart icon */
+.product-card .heart {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+  color: #648EC0; /* Silver Lake Blue */
+  font-size: 1.2rem;
+  z-index: 2;
+}
+
+/* Overlay */
+.product-card .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(83, 58, 51, 0.7); /* Royal Brown fade */
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.2rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 10px;
+}
+
+.product-card:hover .overlay {
+  opacity: 1;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+}
+
+/* RESPONSIVE GRID */
+@media (max-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr); /* tablet */
+  }
+}
+
+@media (max-width: 600px) {
+  .product-grid {
+    grid-template-columns: 1fr; /* mobile */
+  }
+}
