@@ -196,6 +196,7 @@ body {
 }
 
 /* RESPONSIVE GRID */
+/* RESPONSIVE GRID */
 @media (max-width: 1024px) {
   .product-grid {
     grid-template-columns: repeat(2, 1fr); /* tablet */
@@ -204,6 +205,13 @@ body {
 
 @media (max-width: 600px) {
   .product-grid {
-    grid-template-columns: 1fr; /* mobile */
+    grid-template-columns: repeat(2, 1fr); /* phone shows 2 per row */
   }
 }
+
+@media (max-width: 360px) {
+  .product-grid {
+    grid-template-columns: 1fr; /* fallback for tiny phones */
+  }
+}
+
