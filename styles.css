@@ -141,15 +141,24 @@ body {
 /* PRODUCT CARD */
 .product-card img {
   width: 100%;
+<<<<<<< HEAD
   height: 100%;              /* fill parent */
   aspect-ratio: 433 / 577;   /* consistent box */
   object-fit: cover;         /* crops edges, no stretching */
+=======
+  height: 100%;
+  aspect-ratio: 433 / 577;
+  object-fit: cover;
+>>>>>>> 3505afe81d855c76e538a133d2f434b4e9197871
   border-radius: 8px;
   display: block;
 }
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3505afe81d855c76e538a133d2f434b4e9197871
 .product-card img {
   width: 100%;
   height: auto;
@@ -187,6 +196,47 @@ body {
   transition: opacity 0.3s ease;
   border-radius: 10px;
 }
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* stack sidebar above products */
+  }
+
+  .sidebar {
+    width: 100%;
+    padding-right: 0;
+    margin-bottom: 20px;
+  }
+
+  /* make the UL scroll horizontally */
+  .sidebar ul {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;       /* horizontal scroll */
+    white-space: nowrap;
+    padding: 10px 0;
+    margin: 0;
+  }
+
+  .sidebar li {
+    flex: 0 0 auto;          /* keep items from shrinking */
+    display: inline-block;
+    background: #f5f5f5;
+    padding: 8px 16px;
+    border-radius: 20px;
+    margin: 0;               /* remove vertical gaps */
+  }
+
+  .sidebar li.active {
+    background: #849DBB;     /* your active color */
+    color: #fff;
+  }
+
+  /* optional: hide scrollbar on webkit browsers */
+  .sidebar ul::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 
 .product-card:hover .overlay {
   opacity: 1;
@@ -197,6 +247,7 @@ body {
 }
 
 /* RESPONSIVE GRID */
+/* RESPONSIVE GRID */
 @media (max-width: 1024px) {
   .product-grid {
     grid-template-columns: repeat(2, 1fr); /* tablet */
@@ -205,6 +256,13 @@ body {
 
 @media (max-width: 600px) {
   .product-grid {
-    grid-template-columns: 1fr; /* mobile */
+    grid-template-columns: repeat(2, 1fr); /* phone shows 2 per row */
   }
 }
+
+@media (max-width: 360px) {
+  .product-grid {
+    grid-template-columns: 1fr; /* fallback for tiny phones */
+  }
+}
+
